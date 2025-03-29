@@ -19,17 +19,25 @@ def h_movement_cost(state, goal):
                     planes_on_wrong_airport = [key.split("_at_")[0] for key, loc in state.items() if "p" in key and loc and "_at_" in key and key.split("_at_")[1] == current_loc]
                     
                     if planes_on_wrong_airport:
-                        #if the cargo is already placed in the airport we add two moves (flight and unload)
-                        if state.get(f"{cargo}_in_{planes_on_wrong_airport[0]}", False):
-                            movement_cost += 2
-                        #if it is not loaded then 3 moves
-                        else:
-                            movement_cost += 3
+                        #you have to load it, fly and unload
+                        movement_cost += 3
                     
                     # there is no plane at the airport where parcel is placed
                     else:
                         movement_cost += 4
                 else:
-                    movement_cost += 4
+                    # cargo is not at any airport, check if it is in a plane
+                    current_plane = next((key.split('_in_')[1] for key, loc in state.items() if cargo in key and loc and '_in_' in key), None)
+                    
+                    if current_plane:
+                        # the plane's location
+                        plane_location = next((key.split('_at_')[1] for key, loc in state.items() if current_plane in key and loc and '_at_' in key), None)
+                        
+                        if plane_location == dest:
+                            # Cargo is in the plane, which is at the correct airport so just unload 
+                            movement_cost += 1 
+                        else:
+                            # plane is not at the correct destination, so cost for flight and unload
+                            movement_cost += 2
                 
     return movement_cost
