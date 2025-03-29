@@ -29,7 +29,7 @@ def run_problem(problem):
         search_thread.daemon = True 
         search_thread.start()
 
-        search_thread.join(timeout=100) 
+        search_thread.join(timeout=10) 
         
         if search_thread.is_alive():
             raise TimeoutError("Timeout")
@@ -48,14 +48,14 @@ def run_problem(problem):
     print(f"With heuristic: {heuristic_time}")
 
 
-# print("For problem 1")
-# run_problem(air_cargo_problem1)
+print("For problem 1")
+run_problem(air_cargo_problem1)
 
-# print("For problem 2")
-# run_problem(air_cargo_problem2)
+print("For problem 2")
+run_problem(air_cargo_problem2)
 
-# print("For problem 3")
-# run_problem(air_cargo_problem3)
+print("For problem 3")
+run_problem(air_cargo_problem3)
 
 print("For problem 4")
 run_problem(air_cargo_problem4)

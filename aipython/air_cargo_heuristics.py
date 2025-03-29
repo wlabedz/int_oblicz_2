@@ -4,7 +4,7 @@ def h_movement_cost(state, goal):
     
     for fact in goal:
         #if cargo (object) which should be at the particular airport is not there
-        if goal[fact] is True and state.get(fact, False) is False:
+        if goal[fact] is True and state.get(fact, False) is False and '_at_' in fact:
             cargo, dest = fact.split("_at_")
             if cargo.startswith("c"): 
                 current_loc = next((key.split('_at_')[1] for key, loc in state.items() if cargo in key and loc and '_at_' in key), None)

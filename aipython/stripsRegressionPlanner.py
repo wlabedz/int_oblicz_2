@@ -94,6 +94,6 @@ from searchBranchAndBound import DF_branch_and_bound
 from searchMPP import SearcherMPP 
 import stripsProblem
 
-# SearcherMPP(Regression_STRIPS(stripsProblem.problem1)).search()   #A* with MPP
+#SearcherMPP(Regression_STRIPS(stripsProblem.problem1)).search()   #A* with MPP
 # DF_branch_and_bound(Regression_STRIPS(stripsProblem.problem1),10).search() #B&B
 
