@@ -23,16 +23,11 @@ def create_air_cargo_problem1():
     initial_state[at('p2', 'GDN')] = True
     initial_state[at('p3', 'KRK')] = True
 
-    goal_state = {
-        at('c1', 'GDN'): True,
-        at('c2', 'KRK'): True,
-        at('c3', 'KTW'): True,
-        at('c4', 'WAW'): True,
-        at('c5', 'GDN'): True
-    }
+    subgoal1 = {at('c3', 'GDN'): True, at('c4', 'KRK'): True}
+    subgoal2 = {at('c2', 'KTW'): True, at('c1', 'WAW'): True}
+    goal_state = {at('c1', 'GDN'): True, at('c2', 'KRK'): True, at('c3', 'KTW'): True, at('c4', 'WAW'): True, at('c5', 'GDN'): True}
 
-    return Planning_problem(air_cargo_domain, initial_state, goal_state)
-
+    return Planning_problem(air_cargo_domain, initial_state, [subgoal1, subgoal2, goal_state])
 
 def create_air_cargo_problem2():
     air_cargo_domain = create_air_cargo_domain({'c1', 'c2', 'c3'}, 
@@ -55,13 +50,11 @@ def create_air_cargo_problem2():
     initial_state[at('p3', 'KRK')] = True
     initial_state[at('p4', 'WAW')] = True
 
-    goal_state = {
-        at('c1', 'GDN'): True,
-        at('c2', 'KRK'): True,
-        at('c3', 'WAW'): True
-    }
+    subgoal1 = {at('c1', 'KRK'): True, at('c2', 'WAW'): True}
+    subgoal2 = {at('c3', 'GDN'): True}
+    goal_state = {at('c1', 'GDN'): True, at('c2', 'KRK'): True, at('c3', 'WAW'): True}
 
-    return Planning_problem(air_cargo_domain, initial_state, goal_state)
+    return Planning_problem(air_cargo_domain, initial_state, [subgoal1, subgoal2, goal_state])
 
 
 def create_air_cargo_problem3():
@@ -85,14 +78,11 @@ def create_air_cargo_problem3():
     initial_state[at('p2', 'LON')] = True
     initial_state[at('p3', 'BER')] = True
 
-    goal_state = {
-        at('c1', 'LON'): True,
-        at('c2', 'BER'): True,
-        at('c3', 'NYC'): True,
-        at('c4', 'LON'): True
-    }
+    subgoal1 = {at('c1', 'BER'): True, at('c2', 'NYC'): True}
+    subgoal2 = {at('c3', 'LON'): True, at('c4', 'BER'): True}
+    goal_state = {at('c1', 'LON'): True, at('c2', 'BER'): True, at('c3', 'NYC'): True, at('c4', 'LON'): True}
 
-    return Planning_problem(air_cargo_domain, initial_state, goal_state)
+    return Planning_problem(air_cargo_domain, initial_state, [subgoal1, subgoal2, goal_state])
 
 def create_air_cargo_problem4():
     air_cargo_domain = create_air_cargo_domain({'c1', 'c2', 'c3'}, 
@@ -100,24 +90,22 @@ def create_air_cargo_problem4():
                                                {'WAW', 'KRK'})
 
     initial_state = {at(c, a): False for c in {'c1', 'c2', 'c3'} 
-                     for a in {'WAW','KRK'}}
+                     for a in {'WAW', 'KRK'}}
     initial_state.update({at(p, a): False for p in {'p1', 'p2'} 
-                          for a in {'WAW','KRK'}})
+                          for a in {'WAW', 'KRK'}})
     initial_state.update({in_cargo(c, p): False for c in {'c1', 'c2', 'c3'} 
                           for p in {'p1', 'p2'}})
 
     initial_state[at('c1', 'WAW')] = True
     initial_state[at('c2', 'KRK')] = True
     initial_state[at('c3', 'KRK')] = True
-    
 
     initial_state[at('p1', 'KRK')] = True
     initial_state[at('p2', 'WAW')] = True
 
-    goal_state = {
-        at('c1', 'KRK'): True,
-        at('c2', 'WAW'): True,
-        at('c3', 'WAW'): True
-    }
+    subgoal1 = {at('c1', 'KRK'): True, at('c2', 'WAW'): True}
+    subgoal2 = {at('c3', 'WAW'): True}
+    goal_state = {at('c1', 'KRK'): True, at('c2', 'WAW'): True, at('c3', 'WAW'): True}
 
-    return Planning_problem(air_cargo_domain, initial_state, goal_state)
+    return Planning_problem(air_cargo_domain, initial_state, [subgoal1, subgoal2, goal_state])
+   
