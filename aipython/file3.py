@@ -2,7 +2,7 @@ from stripsProblem import STRIPS_domain, Strips, Planning_problem
 from stripsForwardPlanner import Forward_STRIPS
 
 from air_cargo_heuristics import h_movement_cost
-from air_cargo_problems import create_air_cargo_problem1, create_air_cargo_problem2, create_air_cargo_problem3, create_air_cargo_problem4
+from air_cargo_problems import create_air_cargo_problem1, create_air_cargo_problem2, create_air_cargo_problem3, create_air_cargo_problem4, create_air_cargo_problem5, create_air_cargo_problem6, create_air_cargo_problem7
 
 from searchMPP import SearcherMPP
 
@@ -14,6 +14,9 @@ air_cargo_problem1 = create_air_cargo_problem1()
 air_cargo_problem2 = create_air_cargo_problem2()
 air_cargo_problem3 = create_air_cargo_problem3()
 air_cargo_problem4 = create_air_cargo_problem4()
+air_cargo_problem5 = create_air_cargo_problem5()
+air_cargo_problem6 = create_air_cargo_problem6()
+air_cargo_problem7 = create_air_cargo_problem7()
 
 def run_searcher(s2):
     s2.search()
@@ -94,3 +97,12 @@ run_problem(air_cargo_problem3)
 
 print("For problem 4")
 run_problem(air_cargo_problem4)
+
+print("For problem 5")
+run_problem(air_cargo_problem5)
+
+print("For problem 6")
+run_problem(air_cargo_problem6)
+
+print("For problem 7")
+run_problem(air_cargo_problem7)
